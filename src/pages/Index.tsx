@@ -1,16 +1,19 @@
 import { motion } from 'framer-motion';
 import { useGeolocation } from '@/hooks/useGeolocation';
 import { useWeather } from '@/hooks/useWeather';
+import { useForecast } from '@/hooks/useForecast';
 import { WeatherCard } from '@/components/WeatherCard';
+import { ForecastCard } from '@/components/ForecastCard';
 import { LoadingState } from '@/components/LoadingState';
 import { ErrorState } from '@/components/ErrorState';
 
 const Index = () => {
   const { latitude, longitude, error: geoError, loading: geoLoading } = useGeolocation();
   const { weather, loading: weatherLoading, error: weatherError } = useWeather(latitude, longitude);
+  const { forecast, loading: forecastLoading, error: forecastError } = useForecast(latitude, longitude);
 
   const isLoading = geoLoading || weatherLoading;
-  const error = geoError || weatherError;
+  const error = geoError || weatherError || forecastError;
 
   return (
     <div className="min-h-screen sky-gradient overflow-hidden relative">
@@ -67,7 +70,12 @@ const Index = () => {
         )}
         
         {weather && !isLoading && !error && (
-          <WeatherCard weather={weather} />
+          <>
+            <WeatherCard weather={weather} />
+            {!forecastLoading && forecast.length > 0 && (
+              <ForecastCard forecast={forecast} timezone={weather.timezone} />
+            )}
+          </>
         )}
       </main>
 

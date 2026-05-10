@@ -2,15 +2,13 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+**URL**:https://id-preview--96b72eb4-eb81-4277-a85c-2d84ecc562c4.lovable.app/login
 
 ## How can I edit this code?
 
 There are several ways of editing your application.
 
 **Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
 
 Changes made via Lovable will be committed automatically to this repo.
 
